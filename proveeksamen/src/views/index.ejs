@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinsdyrregistrering</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <main>
+        <h1>Velkommen til Reinsdyrregistrering</h1>
+        <form action="/reindeer/search" method="GET">
+            <input type="text" name="query" placeholder="Søk etter reinsdyr..." required>
+            <button type="submit">Søk</button>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

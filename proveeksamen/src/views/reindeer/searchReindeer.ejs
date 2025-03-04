@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Søk etter Reinsdyr</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+
+    <div class="container">
+        <h1>Søk etter Reinsdyr</h1>
+        <form id="searchForm" action="/reindeer/search" method="GET">
+            <input type="text" name="query" placeholder="Søk etter reinsdyr..." required>
+            <button type="submit">Søk</button>
+        </form>
+
+        <div id="searchResults">
+            <% if (results && results.length > 0) { %>
+                <h2>Resultater:</h2>
+                <ul>
+                    <% results.forEach(function(reindeer) { %>
+                        <li>
+                            <strong><%= reindeer.name %></strong> - Serienummer: <%= reindeer.serialNumber %>
+                            <br>Flokk: <%= reindeer.flock.name %>
+                            <br>Fødselsdato: <%= reindeer.birthDate.toDateString() %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else if (results) { %>
+                <p>Ingen reinsdyr funnet.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
